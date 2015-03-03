@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:edit, :show, :update, :destroy]
   
   def index
-    
+    @workouts=Workout.all.order("created_at DESC")
   end
   
   def show
@@ -18,7 +18,7 @@ class WorkoutsController < ApplicationController
     if @workout.save
       redirect_to @workout
     else
-      render 'new'
+      render 'new' 
     end
   end
   
